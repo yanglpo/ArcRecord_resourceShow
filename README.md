@@ -8,8 +8,8 @@
 **请在下载和使用本项目的 24 小时内删除相关文件。**  
 *  ✨ 项目状态 (Current Status)  本项目目前处于早期开发阶段，许多功能尚不完善。
 * 功能实现进度  * [[✓] 角色展示 * [✓] 角色收集展示  
-*  环境要求 (Prerequisites)  JAVA VUE  
-** 如何贡献 (Contributing)  我欢迎任何形式的贡献，无论是代码、文档还是问题报告！  如果你想贡献代码，请遵循以下步骤:** 
+*  环境要求 (Prerequisites)  JAVA VUE
+**我欢迎任何形式的贡献，无论是代码、文档还是问题报告！  如果你想贡献代码，请遵循以下步骤:** 
 1.  **Fork** 本仓库。
 2.  创建一个新的分支 (`git checkout -b feature/your-feature-name`)。
 3.  进行修改并提交 (`git commit -m 'Add some amazing feature'`)。
