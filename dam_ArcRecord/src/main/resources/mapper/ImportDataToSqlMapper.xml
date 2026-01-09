@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.arcrecord.mapper.ImportDataToSqlMapper">
+
+
+    <insert id="insertChs">
+        MERGE INTO CHS (DESKEY, DESCRIPTION)
+        KEY (DESKEY)
+        VALUES
+        <foreach collection="list" item="m" separator=",">
+            (#{m.deskey}, #{m.description})
+        </foreach>
+    </insert>
+
+    <select id="getRoleName" parameterType="string" resultType="string">
+        select DESCRIPTION FROM CHS where DESKEY = #{deskey}
+    </select>
+
+    <!-- 0-67 共 68 个字段 -->
+    <insert id="insertRole" parameterType="list">
+        INSERT INTO ROLE (
+        ID, TITLE, NAME, INITSTAR, ELEMENT, JOB, CONSTELLATION, GRP, CUPSIZE, BIRTHDAY,
+        HEIGHT, WEIGHT, ISHERO, CANSELL, ISR18, ISSTEAMSAFEMODE, IMPRINTGROUP, SKILLIDS,
+        SPTYPE, INITSP, HURTSP, SPINEOBJECT, PROTOTYPEID, SOUNDLANGUAGES, LOBBYTOUCHSOUNDS,
+        SEXTOUCHSOUNDS, COUNTERSOUNDS, HURTSOUNDS, DEADSOUNDS, READYSOUNDS, VICTORYSOUNDS,
+        DEFEATSOUNDS, SUMMONSOUNDS, GIFTSOUNDS, RELVUP1SOUNDS, RELVUP2SOUNDS, RELVUP3SOUNDS,
+        RELVUP4SOUNDS, SKILL1SOUNDS, SKILL2SOUNDS, SKILL3SOUNDS, HEADB, HEADS, HEADM, HEADL,
+        AIS, TEAMIMPRINT, SELFIMPRINT, IMPRINTPOSITIONS, MINPROP_DYNAMICFIELD1,
+        MAXPROP_DYNAMICFIELD1, CUTINPREFAB, CUTINSOUND, HP, ATTACK, DEFENCE, SPEED,
+        CRITICALRATE, CRITICALDAMAGERATE, EFFECTHITRATE, RESISTANCERATE, PINCHRATE,
+        DYNAMICFIELD1, DYNAMICFIELD2, DYNAMICFIELD3, ROLEPROPERTYID, DESCRIPTION,
+        VERSIONCONTROL, REALNAME
+        ) VALUES
+
+        <foreach collection="list" item="line" separator=",">
+        (
+            <foreach collection="line" index="key" item="value" separator=",">
+                #{value}
+            </foreach>
+        )
+        </foreach>
+    </insert>
+
+    <insert id="insertLineDialog">
+        INSERT INTO LINEDIALOG (
+        ID,
+        DRAMAID,
+        TYPE,
+        ISSAFEMODE,
+        SPEAKER,
+        SPEAKERTEXT,
+        SPEAKERICON,
+        DIALOG,
+        NEXTDIALOGIDS,
+        ENERGY,
+        DIALOGIMAGEPREFAB,
+        DIALOGDRAMAIMAGE,
+        DIALOGDRAMIID,
+        HEROID
+        ) VALUES
+        <foreach collection="list" item="line" separator=",">
+            (
+            <foreach collection="line" index="key" item="value" separator=",">
+                #{value}
+            </foreach>
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertroleCollection">
+        INSERT INTO ROLECOLLECTION (
+        ID,
+        ROLEID,
+        TITLE,
+        TYPE,
+        INTIMACYLV,
+        LINEREWARDID,
+        AWAKENLV,
+        SCENEID,
+        ITEMID,
+        PREFABICON,
+        PREFAB,
+        DRAMAIDS,
+        ROLEMOTIONS,
+        HIGHLIGHT,
+        ISSAFEMODE,
+        ACTIVITYIDS
+        ) VALUES
+        <foreach collection="list" item="line" separator=",">
+            (
+            <foreach collection="line" index="key" item="value" separator=",">
+                #{value}
+            </foreach>
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertreadLineDrama">
+        INSERT INTO LINEDRAMA (
+        ID, ROLEID, DRAMAIICON, PRECONDITIONID, DIALOGSPEED, ACTIVITYIDS, ISSAFEMODE
+        ) VALUES
+        <foreach collection="list" item="line" separator=",">
+            (
+            <foreach collection="line" index="key" item="value" separator=",">
+                #{value}
+            </foreach>
+            )
+        </foreach>
+
+    </insert>
+
+
+</mapper>
